@@ -1,0 +1,145 @@
+.navbar *{
+	color: white;
+	text-align: left;
+}
+
+.navbar-nav > li{
+  margin-left:30px;
+  margin-right:30px;
+}
+
+.navbar-nav > li > div{
+  margin-left:30px;
+  margin-right:30px;
+}
+
+.navbar-nav > li > .navbar-brand{
+  margin-left:200px;
+  margin-right:30px;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin: auto;
+    margin-top: 0;
+ }
+ 
+.navbar .navbar-nav {
+  display: inline-block;
+  float: none;
+  vertical-align: top;
+}
+
+.navbar-nav > li > .navbar-brand:hover{
+    background-color: #990016;
+}
+
+.navbar-nav > li > a:hover{
+    background-color: #800013;
+}
+
+.dropdown-menu{
+  background-color: #990016;
+}
+
+.dropdown-menu * :hover {
+  background-color: #800013;
+}
+
+.dropdown-item:hover {
+  text-decoration: none;
+}
+
+.imageSousMenu *{
+  width:392px;
+  height:124px;
+  display: block;
+  margin: auto;
+}
+
+
+.carousel-inner > .item > img{
+  width:768px;
+  height:432px;
+}
+
+.carousel{
+  width:768px;
+  height:432px;
+  display: block;
+  margin: auto;
+}
+
+.bandeauGrey{
+  background-color: #f9f9f9;
+}
+
+.bandeauBlack{
+  background-color: #1F1F1F;
+  color: white;
+}
+
+.paragraph{
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+.slogan{
+  text-align: center;
+  font-size: 180%;
+}
+
+.bold{
+  font-weight: bold;
+}
+
+#prices{
+  margin-left: 150px;
+  margin-right: 150px;
+}
+
+#map {
+  height: 400px;
+  width: 100%;
+ }
+ 
+ /*
+ .buttonWhite{
+	 background-color: white;
+	 color: black;
+ }
+ 
+ .buttonWhite:Hover{
+	 background-color: #f9f9f9;
+	 color: black;
+ }
+ 
+.buttonWhite:active{
+	 background-color: #9F061C;
+	 color: black;
+ }
+ 
+ .buttonRed{
+	 background-color: #990016;
+	 color: white;
+ }
+
+ .buttonRed:Hover{
+	 background-color: #9F061C;
+	 color: white;
+ }
+ 
+ .buttonRed:Active{
+	 background-color: #f9f9f9;
+	 color: black;
+ }
+ */
+ 
+ .calendar *{
+	display: block;
+	margin: auto;
+ }
+
+footer > div{
+  text-align: center;
+}
