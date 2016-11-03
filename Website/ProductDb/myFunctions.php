@@ -4,10 +4,10 @@
 		print("<input type='hidden' name='productID' value='$productID'>");
 		print("<button type=\"button\" class=\"btn btn-primary btn-block buttonWhite\">
 					$eventType:<br>
-					$begDay/$begMonth/$begYear - $begDay/$begMonth/$begYear<br>
+					$begDay/$begMonth/$begYear - $endDay/$endMonth/$endYear<br>
 					<br>
-				</button>");
-		print("<td style='border-style: none; text-align: left;'><input type='submit' value='Add'></td>");
+				</button><br>");
+		//print("<td style='border-style: none; text-align: left;'><input type='submit' value='Add'></td>");
 
 	}
 
