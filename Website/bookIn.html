@@ -52,6 +52,16 @@
 	
 	<div class="bandeauGrey">
 		<br><br>
+			<?php
+				require_once('C:\xampp\htdocs\Website\ProductDb\myFunctions.php');
+
+				$results_id = retrieve_products();
+				while ($row = $results_id->fetch_assoc())
+				{
+					printTableRow($row['productID'], $row['eventType'], $row['begDay'], $row['begMonth'], $row['begYear'],
+							$row['endDay'], $row['endMonth'], $row['endYear'], $row['places']);
+				}
+			?>
 			<p class="paragraph">
 			
 				<button type="button" class="btn btn-primary btn-block buttonWhite">
