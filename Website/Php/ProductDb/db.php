@@ -1,7 +1,7 @@
 <?php
 	function query_database($SQLCmd)
 	{
-		$mysqli = new mysqli('localhost', 'root', 'concordia', 'myfirstdb');
+		$mysqli = new mysqli('localhost', '', '55674729Mg', 'myfirstdb');
 
 		if ($mysqli->connect_errno)
 		{
