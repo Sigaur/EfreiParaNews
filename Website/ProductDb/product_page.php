@@ -50,33 +50,6 @@
 	}
 ?>
 
-<html>
-<head>
-	<title>Products in inventory</title>
-	<style type="text/css">
-		td , th
-		{
-			text-align: center;
-			border: 1px solid black;
-		}
-
-		th
-		{
-			color: white;
-			background-color: black;
-		}
-
-		table
-		{
-			border-collapse: collapse;
-			border: 1px solid black;
-			width: 75%;
-		}
-	</style>
-</head>
-<body>
-
-
 <?php
 /*
 	require_once('myFunctions.php');
@@ -91,7 +64,7 @@
 		print("<a href='cart.php'>Shopping Cart (". count(split(',', $cart_item)) .")</a>");
 	}
 
-
+/*
 	if (isset($_POST['eventType']) && isset($_POST['begDay']) && isset($_POST['begMonth']) && isset($_POST['begYear']) &&
 		isset($_POST['endDay']) && isset($_POST['endMonth']) && isset($_POST['endYear']) && isset($_POST['places']))
 	{
@@ -103,22 +76,25 @@
 	{
 		print("<h2>No Event was submitted.</h2>");
 	}
+	*/
 ?>
-
+<!--
 <h2>Events in the Database</h2>
 <table>
 <tr><th>Event Type</th><th>Beginning Date</th><th>Ending Date</th><th>Place(s) Left</th><td style="border-style: none; width: 0;"></td></tr>
-
+-->
 <?php
+/*
 		$results_id = retrieve_products();
 		while ($row = $results_id->fetch_assoc())
 		{
 			printTableRow($row['productID'], $row['eventType'], $row['begDay'], $row['begMonth'], $row['begYear'],
 							$row['endDay'], $row['endMonth'], $row['endYear'], $row['places']);
 		}
+		*/
 ?>
-
 </table>
+
 
 <?php
 	print("<br><br><h2>Event Class examples</h2>");

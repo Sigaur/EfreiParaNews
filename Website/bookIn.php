@@ -18,7 +18,7 @@
 					require_once('C:\xampp\htdocs\Website\ProductDb\db.php');
 					require_once('C:\xampp\htdocs\Website\ProductDb\product.php');
 					if (isset($_POST['eventType']) && isset($_POST['begDay']) && isset($_POST['begMonth']) && isset($_POST['begYear']) &&
-											isset($_POST['endDay']) && isset($_POST['endMonth']) && isset($_POST['endYear']) && isset($_POST['places']))
+								isset($_POST['endDay']) && isset($_POST['endMonth']) && isset($_POST['endYear']) && isset($_POST['places']))
 					{
 						$newevent = event::constructWithParameters($_POST['eventType'], $_POST['begDay'], $_POST['begMonth'], $_POST['begYear'],
 																	$_POST['endDay'], $_POST['endMonth'], $_POST['endYear'], $_POST['places']);
@@ -30,8 +30,6 @@
 						printTableRow($row['productID'], $row['eventType'], $row['begDay'], $row['begMonth'], $row['begYear'],
 								$row['endDay'], $row['endMonth'], $row['endYear'], $row['places']);
 					}
-					
-					
 				?>			
 			</p>
 		<br><br>

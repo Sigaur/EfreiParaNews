@@ -9,12 +9,28 @@
 		<br>
 		<div class="paragraph">
 			<h4>Temporary</h4>
-				<form target="_blank" action="ProductDb\reset_database.php" method="get">
+				<form method="post">
+					<input type="hidden"  name="reset" value="Reset the database">
 	  				<input type="submit" value="Reset the database">
 				</form>
 			<br><br>
 		</div>
 	</div>
+
+	<?php
+	require("ProductDb\db.php");
+	if (isset($_POST['reset']))
+	{
+		query_database("DROP TABLE Events");
+		query_database("CREATE TABLE Events(productID INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+											  eventType VARCHAR(50), begDay INT, begMonth INT, begYear INT,
+											  endDay INT, endMonth INT, endYear INT, places INT NOT NULL)");
+
+		query_database("INSERT INTO Events VALUES(NULL, 'Training Session', 4, 11, 2016, 5, 11, 2016, 70)");
+		query_database("INSERT INTO Events VALUES(NULL, 'Canopy Flying Session', 11, 11, 2016, 12, 11, 2016, 50)");
+		query_database("INSERT INTO Events VALUES(NULL, 'B Certificate Session', 18, 11, 2016, 19, 19, 2016, 30)");
+	}
+	?>
 
 	<div class="col-xs-6">
 	<div>
@@ -68,24 +84,24 @@
 	<div class="col-xs-6">
 		<h4 id="prices">Delete an event:</h4>
 			<br>
-			<form>
+			<form action="" method="post">
 				<div class="form-group">
-				    <label for="account">Admin account:</label>
-				    <input type="account" class="form-control" id="account">
-			  	</div>
-			  	<div class="form-group">
-				    <label for="pwd">Admin Password:</label>
-				    <input type="password" class="form-control" id="pwd">
-			  	</div>
-				<div class="form-group">
-				    <label for="eventName">Event Name:</label>
-				    <input type="eventName" class="form-control" id="eventName">
+				    <label>Event ID:</label>
+				    <input type="int" class="form-control" name="productID" placeholder="Event Id" required>
 			  	</div>
 			  	<button type="submit" class="btn btn-default">Submit</button>
 			</form>
 		<br><br>
 	</div>
-	
+
+	<?php
+		//require("ProductDb\db.php");
+		if (isset($_POST['productID']))
+		{
+			$tempID = $_POST['productID'];
+			query_database("DELETE FROM events WHERE productID=$tempID");
+		}
+	?>	
 		<br><br><br><br><br><br><br><br><br><br><br><br>
 		<br><br><br><br><br><br><br><br><br><br><br><br>
 		<br><br><br><br><br><br><br><br><br><br><br><br>

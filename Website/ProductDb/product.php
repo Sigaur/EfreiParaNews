@@ -47,6 +47,11 @@ class event
 		return "$this->productID - $this->eventType starts the $this->begDay of $this->begMonth $this->begYear and finishes the $this->endDay of $this->endMonth $this->endYear. $this->places place(s) left";
 	}
 
+	public function affichage()
+	{
+		return "$this->productID - $this->eventType";
+	}
+
 	public function create_table()
 	{
 		query_database("CREATE TABLE Events(productID INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
