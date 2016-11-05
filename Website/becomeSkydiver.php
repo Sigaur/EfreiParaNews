@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-	include_once('C:\xampp\htdocs\Website\header.html');
+	include_once('header.html');
 ?>
 
 <body>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-	include_once('C:\xampp\htdocs\Website\header.html');
+	include_once('header.html');
 ?>
 
 <body>
@@ -9,27 +9,40 @@
 	
 	<div class="bandeauGrey">
 		<br><br>
-
-			<form class="paragraph">
-				<div class="form-group">
-				    <label for="account">Account name:</label>
-				    <input type="account" class="form-control" id="account">
-			  	</div>
-			  	<div class="form-group">
-				    <label for="pwd">Password:</label>
-				    <input type="password" class="form-control" id="pwd">
-			  	</div>
-			  	<div class="form-group">
-				    <label for="pwdc">Password confirmation:</label>
-				    <input type="passwordc" class="form-control" id="pwdc">
-			  	</div>
-			  	<div class="form-group">
-				    <label for="email">Email:</label>
-				    <input type="email" class="form-control" id="email">
-			  	</div>
+			<div>
+			<h4>Delete a User:</h4>
 				<br>
-			  	<button type="submit" class="btn btn-default">Submit</button>
-			</form>
+				<form action="" method="post">
+					<div class="form-group">
+					    <label>Account Name:</label>
+					    <input type="text" class="form-control" name="login" placeholder="Login" required>
+				  	</div>
+				  	<div class="form-group">
+					    <label>Password:</label>
+					    <input type="password" class="form-control" name="password" placeholder="password" required>
+				  	</div>
+
+				  	<div class="form-group">
+					    <label>Email:</label>
+					    <input type="email" class="form-control" name="email" placeholder="email" required>
+				  	</div>
+				  	<button type="submit" class="btn btn-default">Submit</button>
+				</form>
+			<br><br>
+		</div>
+
+		<?php
+			require_once('Php\db.php');
+			require_once('Php\user.php');
+		//////////////////////////////////////////////////////////////////////////////////////////////////////
+		//////////							ADDING USERS TO THE DATABASE							//////////
+		//////////////////////////////////////////////////////////////////////////////////////////////////////
+			if (isset($_POST['login']) && isset($_POST['password']) && isset($_POST['email']))
+			{
+				$newuser = user::constructWithParameters($_POST['login'], $_POST['password'], $_POST['email']);
+				$newuser->insert_record();
+			}
+		?>
 
 		<br><br>
 	</div>
