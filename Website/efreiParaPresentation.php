@@ -1,7 +1,10 @@
+<?php
+	session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <?php
-	include_once('header.html');
+	include_once('header.php');
 ?>
 
 <body>

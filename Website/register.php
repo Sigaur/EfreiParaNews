@@ -1,7 +1,10 @@
+<?php
+	session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <?php
-	include_once('header.html');
+	include_once('header.php');
 ?>
 
 <body>
@@ -10,7 +13,7 @@
 	<div class="bandeauGrey">
 		<br><br>
 			<div>
-			<h4>Delete a User:</h4>
+			<h4>Adding a User:</h4>
 				<br>
 				<form action="" method="post">
 					<div class="form-group">

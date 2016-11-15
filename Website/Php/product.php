@@ -49,7 +49,7 @@ class event
 
 	public function affichage()
 	{
-		return "$this->eventID - $this->eventType";
+		return "$this->eventID - $this->eventType starts the $this->begDay of $this->begMonth $this->begYear and finishes the $this->endDay of $this->endMonth $this->endYear.<br><br>";
 	}
 
 	public function create_table()

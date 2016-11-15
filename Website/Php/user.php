@@ -14,6 +14,7 @@ class user
 
 	public function __construct()
 	{
+		$this->userID = null;
 		$this->login = null;
 		$this->password = null;
 		$this->mail = null;
@@ -32,7 +33,7 @@ class user
 
 	public function __toString()
 	{
-		return "User $this->login is using $this->password as a password. E-mail : $mail";
+		return "User $this->login is using $this->password as a password. E-mail : $this->mail";
 	}
 
 	public function create_table()
@@ -58,8 +59,27 @@ class user
 			$this->userID = $row["userID"];
 			$this->login = $row["login"];
 			$this->password = $row["password"];
-			$this->password = $row["mail"];
+			$this->mail = $row["mail"];
 		}
+	}
+
+	public function read_recordLogin($login)
+	{
+		$results_id = query_database("SELECT * FROM Users WHERE login='$login'");
+		
+			if ($row = $results_id->fetch_assoc())
+			{
+				$this->userID = $row["userID"];
+				$this->login = $row["login"];
+				$this->password = $row["password"];
+				$this->mail = $row["mail"];
+			}
+				
+	}
+
+	public function getPassword()
+	{
+		return $this->password;
 	}
 }
 

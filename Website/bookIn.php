@@ -1,7 +1,58 @@
+<?php
+	session_start();
+
+	// set shopping cart items
+	$cart_item = null;
+	
+	if (isset($_SESSION['cart_item']))
+	{
+		$cart_item = $_SESSION['cart_item'];
+	}
+	elseif (isset($_COOKIE['cart_item']))
+	{
+		$cart_item = $_COOKIE['cart_item'];
+	}
+
+	
+	if (isset($_POST['eventID']))
+	{
+		$productToAdd = $_POST['eventID'];
+		$expiration = time() + (60*60*24*7);
+
+		// Add cart item to cookie			
+		if (isset($_COOKIE['cart_item']))
+		{
+			// Append to existing cookie
+			$cart_item = $_COOKIE['cart_item'];
+			$cart_item = "$cart_item,$productToAdd";
+		}
+		else
+		{
+			// Create cookie
+			$cart_item = $productToAdd;
+		}
+
+
+		// Add cart item to session
+		if (isset($_SESSION['cart_item']))
+		{
+			$cart_item = $_SESSION['cart_item'];
+			$cart_item = "$cart_item,$productToAdd";	
+		}
+		else
+		{
+			$cart_item = "$productToAdd";
+		}
+
+		$_SESSION['cart_item'] = $cart_item;
+		setcookie("cart_item", $cart_item, $expiration);
+
+	}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <?php
-	include_once('header.html');
+	include_once('header.php');
 ?>
 
 <body>
@@ -10,7 +61,7 @@
 	<div class="bandeauGrey">
 		<br><br>
 			
-			<p class="paragraph">
+			<p class="paragraph" id="logIn">
 
 				<?php
 				//////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -24,6 +75,13 @@
 						printTableRowEvents($row['eventID'], $row['eventType'], $row['begDay'], $row['begMonth'], $row['begYear'],
 								$row['endDay'], $row['endMonth'], $row['endYear'], $row['places']);
 					}
+
+					if (isset($cart_item))
+					{
+						print("Shopping cart cookie: " . $cart_item);
+					
+						print("<a href='account.php'>Shopping Cart (". count(split(',', $cart_item)) .")</a>");
+					}
 				?>			
 			</p>
 		<br><br>
@@ -31,38 +89,51 @@
 	
 	<br><br>
 
-	<p>
-		<h4 class="paragraph">
-			Example of form to book in (WIP)<br>
-			Here, the example is for when the last button is selected<br>
-			<br><br>
-			<form>
-				<div class="form-group">
-				    <label for="account">Account:</label>
-				    <input type="account" class="form-control" id="account">
-			  	</div>
-			  	<div class="form-group">
-				    <label for="pwd">Password:</label>
-				    <input type="password" class="form-control" id="pwd">
-			  	</div>
-			  	<label class="checkbox-inline"><input type="checkbox" value="">26 November</label>
-				<label class="checkbox-inline"><input type="checkbox" value="">27 November</label>
-				<br><br>
-			  	<div class="radio">
-				  	<label><input type="radio" name="optradio">Housing</label>
-				</div>
-				<div class="radio">
-				  	<label><input type="radio" name="optradio">Camping</label>
-				</div>
-				<br>
-				No account? Try 
-				<a href="register.php">register</a>.
-				<br>
-			  	<button type="submit" class="btn btn-default">Submit</button>
-			</form>
+	
 
-		</h4>
-	</p>
+	<?php
+	//////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////									Loging In										//////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////
+	require_once('Php\user.php');
+	if (!isset($_SESSION["login"]))
+	{
+		print("<p>
+				<h4 class='paragraph'>
+					Sign In<br>
+					<br><br>
+					<form action='#logIn' method='post'>
+						<div class='form-group'>
+						    <label>Login:</label>
+						    <input type='text' class='form-control' name='login' placeholder='Login' required>
+					  	</div>
+					  	<div class='form-group'>
+						    <label>Password:</label>
+						    <input type='password' class='form-control' name='password' placeholder='Password' required>
+					  	</div>
+					  	<button type='submit' class='btn btn-default'>Submit</button>
+					</form>
+
+				</h4>
+			</p>");
+	}
+	if (isset($_POST['login']) && isset($_POST['password']))
+	{
+      	$tempUser = new user();
+      	$tempUser->read_recordLogin($_POST['login']);
+
+      	if($_POST['password'] == $tempUser->getPassword())
+		{
+			print("Connected!!!!!!");
+			$_SESSION["login"] = $_POST['login'];
+			header("Refresh:0");
+		}
+		else
+		{			
+			//print("Non Connecte... $_POST['password'] / $tempUser->getPassword()");
+		}
+	}
+   	?>
 
 	<br><br>
 	
